@@ -37,4 +37,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/dashboard/webhook/delete/{hook:id}', [WebhookController::class, 'deleteWebhook']);
 
     Route::get('/dashboard/log', [LogController::class, 'index'])->name('log');
+
+
+
+    Route::get('/logout', [AuthController::class, 'logout']);
+    Route::post('/logout', [AuthController::class, 'logout']);
 });

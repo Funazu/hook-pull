@@ -20,7 +20,7 @@
     <div class="col-xl-3 col-md-6 mb-3">
         <div class="small-box bg-gradient-danger">
             <div class="inner">
-                <h3>{{ $success->count() }}</h3>
+                <h3>{{ $error->count() }}</h3>
                 <p>Error</p>
             </div>
         </div>
