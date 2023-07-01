@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\URL;
 class LogController extends Controller
 {
     public function index() {
-        $logs = Log::with('hook');
+        $logs = Log::with('hook')->latest();
         return view('dashboard.log.index', [
             'title' => "Log",
             'active' => 'log',
