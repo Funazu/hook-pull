@@ -15,7 +15,7 @@ class LogController extends Controller
             'title' => "Log",
             'active' => 'log',
             // 'logs' => DB::table('logs')->with('hook')->paginate(10)
-            'logs' => $logs->paginate(1)
+            'logs' => $logs->paginate(10)
             // 'logs' => Log::all()
         ])->with('i');
     }
