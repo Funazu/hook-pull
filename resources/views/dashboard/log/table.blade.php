@@ -12,7 +12,7 @@
         <tbody>
             @foreach ($logs as $log)
                 <tr>
-                    <th>{{ ++$i }}</th>
+                    <th>{{ $log->id }}</th>
                     <th>{{ $log->hook->name }}</th>
                     @if ($log->status == 'success')
                         <th style="color: green;">Success</th>
