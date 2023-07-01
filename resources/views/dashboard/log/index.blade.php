@@ -4,11 +4,12 @@
     <div class="col-xl-12 col-md-12 mb-2">
         <div class="card shadow">
             <div class="card-body">
-                <h4>Logs Webhook</h4>
                 <div class="row">
-                    <div class="col-3">
-                        <div class="form-group">
-                            <strong>Webhook</strong>
+                    <div class="col-6">
+                        <h4>Logs Webhook</h4>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group float-right">
                             <form action="?webhook=" method="GET">
                                 <select name="webhook" class="custom-select" onchange="this.form.submit()">
                                     <option selected>Webhook</option>
