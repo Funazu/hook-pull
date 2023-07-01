@@ -10,11 +10,13 @@ use Illuminate\Support\Facades\URL;
 class LogController extends Controller
 {
     public function index() {
+        $logs = Log::with('hook');
         return view('dashboard.log.index', [
             'title' => "Log",
             'active' => 'log',
-            // 'logs' => DB::table('logs')->paginate(10)
-            'logs' => Log::all()
+            // 'logs' => DB::table('logs')->with('hook')->paginate(10)
+            'logs' => $logs->paginate(1)
+            // 'logs' => Log::all()
         ])->with('i');
     }
 }
