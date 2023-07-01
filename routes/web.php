@@ -6,6 +6,7 @@ use App\Http\Controllers\LogController;
 use App\Http\Controllers\ProcessesController;
 use App\Http\Controllers\WebhookController;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard/log', [LogController::class, 'index'])->name('log');
 
 
+
+    Route::get('/profile', [DashboardController::class, 'profile'])->name('profile');
+    Route::put('/auth/account/changepassword/{user:id}', [DashboardController::class, 'changePassword'])->name('changePassword');
 
     Route::get('/logout', [AuthController::class, 'logout']);
     Route::post('/logout', [AuthController::class, 'logout']);

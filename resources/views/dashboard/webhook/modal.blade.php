@@ -22,7 +22,7 @@
                     </div>
                     <div class="form-group">
                         <strong>Commands</strong>
-                        <textarea name="commands" class="form-control" placeholder="Commands"></textarea>
+                        <textarea name="commands" cols="30" rows="10" class="form-control" placeholder="git reset --hard HEAD && &#10;git pull &&&#10;ls"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -60,7 +60,7 @@
                     </div>
                     <div class="form-group">
                         <strong>Commands</strong>
-                        <textarea name="commands" class="form-control" placeholder="Commands">{{ $webhook->commands }}</textarea>
+                        <textarea name="commands" cols="30" rows="10" class="form-control" placeholder="Commands">{{ $webhook->commands }}</textarea>
                     </div>
                 </div>
                 <div class="modal-footer">

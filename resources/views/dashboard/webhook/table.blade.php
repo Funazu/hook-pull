@@ -18,8 +18,8 @@
                     <td>{{ $webhook->path }}</td>
                     <td>{{ $webhook->commands }}</td>
                     <td>
-                        <button class="btn btn-warning mb-1" onclick="run_webhook('{{ url('/api/v1/webhook/' . $webhook->hash) }}')"><i class="fas fa-play"></i></button>
-                        <button type="button" onclick="link_webhook('{{ url('/api/v1/webhook/' . $webhook->hash) }}')" class="btn btn-success mb-1"><i class="fas fa-copy"></i></button>
+                        <button class="btn btn-warning mb-1" onclick="run_webhook('{{ env('APP_URL') . '/api/v1/webhook/' . $webhook->hash }}')"><i class="fas fa-play"></i></button>
+                        <button type="button" onclick="link_webhook('{{ env('APP_URL') . '/api/v1/webhook/' . $webhook->hash }}')" class="btn btn-success mb-1"><i class="fas fa-copy"></i></button>
                     </td>
                     <td>
                         <form action="/dashboard/webhook/delete/{{ $webhook->id }}" method="post">
