@@ -5,7 +5,22 @@
         <div class="card shadow">
             <div class="card-body">
                 <h4>Logs Webhook</h4>
-                <hr>
+                <div class="row">
+                    <div class="col-3">
+                        <div class="form-group">
+                            <strong>Webhook</strong>
+                            <form action="?webhook=" method="GET">
+                                <select name="webhook" class="custom-select" onchange="this.form.submit()">
+                                    <option selected>Webhook</option>
+                                    <option value="">ALL</option>
+                                    @foreach ($webhooks as $webhook)
+                                        <option value="{{ $webhook->id }}">{{ $webhook->name }}</option>
+                                    @endforeach
+                                </select>
+                            </form>
+                        </div>
+                    </div>
+                </div>
                 @include('dashboard.log.table')
             </div>
         </div>
