@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Log;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 
 class LogController extends Controller
@@ -11,6 +13,8 @@ class LogController extends Controller
         return view('dashboard.log.index', [
             'title' => "Log",
             'active' => 'log',
-        ]);
+            // 'logs' => DB::table('logs')->paginate(10)
+            'logs' => Log::all()
+        ])->with('i');
     }
 }
