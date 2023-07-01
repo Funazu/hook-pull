@@ -13,6 +13,10 @@ class Log extends Model
 
     protected $guarded = ['id'];
 
+    protected $casts = [
+        'meta' => 'array',
+    ];
+
     public function hook() {
         return $this->belongsTo(Hook::class);
     }

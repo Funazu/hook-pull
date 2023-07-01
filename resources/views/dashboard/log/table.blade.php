@@ -4,6 +4,7 @@
             <tr>
                 <th>#</th>
                 <th>Webhook</th>
+                <th>Message</th>
                 <th>Status</th>
                 <th>Time</th>
                 <th>Action</th>
@@ -14,6 +15,7 @@
                 <tr>
                     <th>{{ $log->id }}</th>
                     <th>{{ $log->hook->name }}</th>
+                    <th>{{ $log->meta['message'] ?? "" }}</th>
                     @if ($log->status == 'success')
                         <th style="color: green;">Success</th>
                     @else
