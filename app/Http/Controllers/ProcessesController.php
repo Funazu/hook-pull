@@ -42,11 +42,8 @@ class ProcessesController extends Controller
                 ];
                 return response()->json($response, Response::HTTP_BAD_REQUEST);
             }
-            // echo $process->errorOutput();
-
+            
         } catch (Throwable $e) {
-            //throw $th;
-            // echo $e;
             Log::create([
                 'hook_id' => $webhook->id,
                 'status' => 'error',
