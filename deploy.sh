@@ -2,11 +2,9 @@ composer install
 
 cp .env.example .env
 
-echo Username:
-read user
+read -p 'Username: ' user
 
-echo Password:
-read pass
+read -p 'Password: ' pass
 
 php artisan key:generate
 

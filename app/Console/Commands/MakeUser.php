@@ -28,7 +28,7 @@ class MakeUser extends Command
     {
         User::create([
             'username' => $this->argument('user'),
-            'password' => $this->argument('pass')
+            'password' => bcrypt($this->argument('pass'))
         ]);
 
         echo "User successfully created!" . PHP_EOL;
