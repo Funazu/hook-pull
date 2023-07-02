@@ -4,7 +4,7 @@
     <div class="col-xl-4 col-md-12 mb-2">
         @include('dashboard.template.alert')
     </div>
-    
+
     <div class="col-12 mb-2">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createModal">
             Create
@@ -26,9 +26,13 @@
             type: "POST",
             url: link,
             data: {},
-            success: function (response) {
+            success: function(response) {
                 console.log(response);
-                alert('Running Successfully');
+                alert('Running Successfully!');
+            },
+            error: function(response) {
+                console.log(response);
+                alert('Running Failed!');
             }
         });
     }
