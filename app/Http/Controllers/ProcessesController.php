@@ -12,7 +12,8 @@ use Illuminate\Http\Response;
 
 class ProcessesController extends Controller
 {
-    public function webhook(Request $request, Hook $hook) {
+    public function webhook(Request $request, Hook $hook)
+    {
         $webhook = DB::table('hooks')->where('id', $hook->id)->first();
         $meta = [
             'message' => $request->input('head_commit.message') ?? "MANUAL",
@@ -20,7 +21,20 @@ class ProcessesController extends Controller
         ];
         try {
             $process = Process::path($webhook->path)->run($webhook->commands);
-            if($process->output()) {
+            if ($process->errorOutput()) {
+                Log::create([
+                    'hook_id' => $webhook->id,
+                    'meta' => $meta,
+                    'status' => 'error',
+                    'payload' => $process->errorOutput(),
+                ]);
+                $response = [
+                    'status' => 'error',
+                    'result' => $process->errorOutput()
+                ];
+                return response()->json($response, Response::HTTP_BAD_REQUEST);
+            }
+            if ($process->output()) {
                 // echo $process->output();
                 Log::create([
                     'hook_id' => $webhook->id,
@@ -34,20 +48,6 @@ class ProcessesController extends Controller
                 ];
                 return response()->json($response, Response::HTTP_OK);
             }
-            if($process->errorOutput()) {
-                Log::create([
-                    'hook_id' => $webhook->id,
-                    'meta' => $meta,
-                    'status' => 'error',
-                    'payload' => $process->errorOutput(),
-                ]);
-                $response = [
-                    'status' => 'error',
-                    'result' => $process->errorOutput()
-                ];
-                return response()->json($response, Response::HTTP_BAD_REQUEST);
-            }
-
         } catch (Throwable $e) {
             Log::create([
                 'hook_id' => $webhook->id,
