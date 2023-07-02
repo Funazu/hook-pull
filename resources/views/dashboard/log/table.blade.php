@@ -21,7 +21,7 @@
                     @else
                         <th style="color: red;">Error</th>
                     @endif
-                    <th>{{ $log->created_at->format('d M Y - H:i:s') }}</th>
+                    <th>{{ $log->created_at->diffForHumans() }}</th>
                     <th>
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#show-{{ $log->id }}ModalLong">
                             <i class="fas fa-eye"></i>
