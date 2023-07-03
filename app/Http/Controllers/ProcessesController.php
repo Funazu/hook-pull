@@ -20,7 +20,8 @@ class ProcessesController extends Controller
             'commands' => $hook->commands
         ];
         try {
-            $process = Process::path($webhook->path)->run($webhook->commands);
+            $commands = str_replace(["\r", "\n"], " ", $webhook->commands);
+            $process = Process::path($webhook->path)->run($commands);
             if ($process->errorOutput()) {
                 Log::create([
                     'hook_id' => $webhook->id,
