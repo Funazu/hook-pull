@@ -31,7 +31,7 @@ class ProcessesController extends Controller
                 'hook_id' => $webhook->id,
                 'meta' => $meta,
                 'status' => $status,
-                'payload' => '' . $error . '============' . $success . '',
+                'payload' => '' . $error . PHP_EOL.'============' . PHP_EOL.$success . '',
             ]);
             $response = [
                 'status' => $status,
