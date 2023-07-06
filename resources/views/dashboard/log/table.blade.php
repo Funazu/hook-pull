@@ -1,5 +1,5 @@
 <div class="table-responsive">
-    <table class="table table-bordered">
+    <table class="table table-bordered table-hover">
         <thead>
             <tr>
                 <th>#</th>
@@ -13,20 +13,20 @@
         <tbody>
             @foreach ($logs as $log)
                 <tr>
-                    <th>{{ $log->id }}</th>
-                    <th>{{ $log->hook->name }}</th>
-                    <th>{{ $log->meta['message'] ?? "" }}</th>
+                    <td>{{ $log->id }}</td>
+                    <td>{{ $log->hook->name }}</td>
+                    <td>{{ $log->meta['message'] ?? "" }}</td>
                     @if ($log->status == 'success')
-                        <th style="color: green;">Success</th>
+                        <td style="color: green;">Success</td>
                     @else
-                        <th style="color: red;">Error</th>
+                        <td style="color: red;">Error</td>
                     @endif
-                    <th>{{ $log->created_at->diffForHumans() }}</th>
-                    <th>
+                    <td>{{ $log->created_at->diffForHumans() }}</td>
+                    <td>
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#show-{{ $log->id }}ModalLong">
                             <i class="fas fa-eye"></i>
                         </button>
-                    </th>
+                    </td>
                 </tr>
             @endforeach
         </tbody>

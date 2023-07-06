@@ -29,19 +29,20 @@ class testing extends Command
      */
     public function handle()
     {
-        $ini = DB::table('hooks')->where('id', 3)->first();
+        $ini = DB::table('hooks')->where('id', 2)->first();
 
         try {
             // foreach($ini as $data) {
-                $process = Process::path($ini->path)->run($ini->commands);
-                if($process->output()) {
-                    echo $process->output();
-                }
-                if($process->errorOutput()) {
-                    echo $process->errorOutput();
-                }
-                // echo $data->commands;
-            // }
+            $commands = str_replace(["\r", "\n"], " ", $ini->commands);
+            $process = Process::path($ini->path)->run($commands);
+
+            $error = $process->errorOutput();
+            $success = $process->output();
+            $status = empty($error) ? "success" : "error";
+
+
+
+            print_r($status);
 
         } catch (Throwable $e) {
             //throw $th;

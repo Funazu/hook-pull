@@ -22,33 +22,22 @@ class ProcessesController extends Controller
         try {
             $commands = str_replace(["\r", "\n"], " ", $webhook->commands);
             $process = Process::path($webhook->path)->run($commands);
-            if ($process->errorOutput()) {
-                Log::create([
-                    'hook_id' => $webhook->id,
-                    'meta' => $meta,
-                    'status' => 'error',
-                    'payload' => $process->errorOutput(),
-                ]);
-                $response = [
-                    'status' => 'error',
-                    'result' => $process->errorOutput()
-                ];
-                return response()->json($response, Response::HTTP_BAD_REQUEST);
-            }
-            if ($process->output()) {
-                // echo $process->output();
-                Log::create([
-                    'hook_id' => $webhook->id,
-                    'meta' => $meta,
-                    'status' => 'success',
-                    'payload' => $process->output()
-                ]);
-                $response = [
-                    'status' => 'success',
-                    'result' => $process->output()
-                ];
-                return response()->json($response, Response::HTTP_OK);
-            }
+
+            $error = $process->errorOutput();
+            $success = $process->output();
+            $status = $process->failed() ? "error" : "success";
+
+            Log::create([
+                'hook_id' => $webhook->id,
+                'meta' => $meta,
+                'status' => $status,
+                'payload' => '' . $error . '============' . $success . '',
+            ]);
+            $response = [
+                'status' => $status,
+                'result' => $process->failed() ? $process->errorOutput() : $process->output()
+            ];
+            return response()->json($response, $process->failed() ? Response::HTTP_BAD_REQUEST : Response::HTTP_OK);
         } catch (Throwable $e) {
             Log::create([
                 'hook_id' => $webhook->id,
