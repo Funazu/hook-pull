@@ -15,7 +15,7 @@ class ProcessesController extends Controller
     public function webhook(Request $request, Hook $hook) {
         $webhook = DB::table('hooks')->where('id', $hook->id)->first();
         $meta = [
-            'message' => empty($request->input('head_commit.message')) ? $request->input('head_commit.message') ?? "MANUAL" : "MANUAL",
+            'message' => empty($request->input('head_commit.message')) ? "MANUAL" : $request->input('head_commit.message') ?? "MANUAL",
             'commands' => $hook->commands
         ];
         try {
