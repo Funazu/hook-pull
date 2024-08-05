@@ -21,10 +21,6 @@
                     <input type="text" value="{{ $log->meta['message'] ?? "" }}" class="form-control" disabled>
                 </div>
                 <div class="form-group">
-                    <strong>Commands:</strong>
-                    <textarea rows="5" class="form-control" disabled>{{ $log->meta['commands'] ?? "" }}</textarea>
-                </div>
-                <div class="form-group">
                     <strong>DateTime</strong>
                     <input type="text" value="{{ $log->created_at->format('d M Y - H:i:s') }}" class="form-control" disabled>
                 </div>
