@@ -17,4 +17,9 @@ class Hook extends Model
     public function log() {
         return $this->hasMany(Log::class);
     }
+
+    public function status()
+    {
+        return $this->hasMany(Status::class);
+    }
 }

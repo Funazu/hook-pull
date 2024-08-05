@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LogController;
 use App\Http\Controllers\ProcessesController;
+use App\Http\Controllers\StatusController;
 use App\Http\Controllers\WebhookController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -26,6 +27,8 @@ Route::get('/', function() {
     return redirect()->route('login');
 });
 
+Route::get('/status/{status:id_status}', [StatusController::class, 'status']);
+
 Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');
 Route::post('/login', [AuthController::class, 'loginPost'])->middleware('guest');
 
@@ -39,7 +42,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/dashboard/log', [LogController::class, 'index'])->name('log');
 
-
+    Route::get('/dashboard/public-status', [StatusController::class, 'index'])->name('public-status');
+    Route::post('/dashboard/public-status/create', [StatusController::class, 'post']);
+    Route::post('/dashboard/public-status/delete/{status:id_status}', [StatusController::class, 'delete']);
 
     Route::get('/profile', [DashboardController::class, 'profile'])->name('profile');
     Route::put('/auth/account/changepassword/{user:id}', [DashboardController::class, 'changePassword'])->name('changePassword');

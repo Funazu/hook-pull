@@ -41,6 +41,14 @@
           </a>
         </li>
         <li class="nav-item">
+          <a href="{{ route('public-status') }}" class="nav-link {{ ($active === 'public-status') ? 'active': ''}}">
+            <i class="nav-icon fa fa-bolt"></i>
+            <p>
+              Public Status
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
           <a href="{{ route('log') }}" class="nav-link {{ ($active === 'log') ? 'active': ''}}">
             <i class="nav-icon fas fa-clock-rotate-left"></i>
             <p>
