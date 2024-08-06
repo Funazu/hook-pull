@@ -33,6 +33,7 @@
                                     <option value="npm run build">Build Vite</option>
                                     <option value="php artisan db:seed">Seeder</option>
                                     <option value="php artisan migrate">Migrate Biasa</option>
+                                    <option value="git reset --hard HEAD && git pull">Git Pull</option>
                                 </select>
                             </div>
                             <div class="form-group">
