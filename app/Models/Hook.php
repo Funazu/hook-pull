@@ -22,4 +22,9 @@ class Hook extends Model
     {
         return $this->hasMany(Status::class);
     }
+
+    public function terminalpermission()
+    {
+        return $this->hasMany(TerminalPermission::class);
+    }
 }

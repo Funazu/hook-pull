@@ -24,6 +24,7 @@
         <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
 
         <li class="nav-header">Hook</li>
+        @can('admin')
         <li class="nav-item">
           <a href="{{ route('dashboard') }}" class="nav-link {{ ($active === 'dashboard') ? 'active': ''}}">
             <i class="nav-icon fas fa-th"></i>
@@ -49,10 +50,28 @@
           </a>
         </li>
         <li class="nav-item">
+          <a href="{{ route('terminal.permission') }}" class="nav-link {{ ($active === 'terminal-permission') ? 'active': ''}}">
+            <i class="nav-icon fa fa-terminal"></i>
+            <p>
+              Terminal Permission
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
           <a href="{{ route('log') }}" class="nav-link {{ ($active === 'log') ? 'active': ''}}">
             <i class="nav-icon fas fa-clock-rotate-left"></i>
             <p>
               Log
+            </p>
+          </a>
+        </li>
+        @endcan
+
+        <li class="nav-item">
+          <a href="{{ route('terminal') }}" class="nav-link {{ ($active === 'terminal') ? 'active': ''}}">
+            <i class="nav-icon fa fa-terminal"></i>
+            <p>
+              Terminal
             </p>
           </a>
         </li>

@@ -16,4 +16,9 @@ class User extends Authenticatable
         'username',
         'password',
     ];
+
+    public function terminalpermission()
+    {
+        return $this->hasMany(TerminalPermission::class);
+    }
 }

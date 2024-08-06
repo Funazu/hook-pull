@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('terminal_permissions', function (Blueprint $table) {
             $table->id();
-            $table->string('username');
-            $table->string('password');
-            $table->boolean('is_admin')->default(false);
+            $table->string('id_terminal_permission')->unique();
+            $table->foreignId('user_id');
+            $table->foreignId('hook_id');
+            $table->string('title');
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('terminal_permissions');
     }
 };
