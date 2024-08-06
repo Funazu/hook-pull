@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,8 +21,12 @@ class AuthController extends Controller
         ]);
 
         if(Auth::attempt($credentials)) {
+            $checkUser = User::where('username', $request->username)->first();
             $request->session()->regenerate();
-            return redirect()->intended('/dashboard');
+            if($checkUser->is_admin === 1) {
+                return redirect()->intended('/dashboard');
+            }
+            return redirect()->route('terminal');
         }
 
         return back()->with('loginError', 'Gagal Login!!');
