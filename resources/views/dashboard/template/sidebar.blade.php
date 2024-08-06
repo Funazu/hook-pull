@@ -23,8 +23,8 @@
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
 
-        <li class="nav-header">Hook</li>
         @can('admin')
+        <li class="nav-header">Hook</li>
         <li class="nav-item">
           <a href="{{ route('dashboard') }}" class="nav-link {{ ($active === 'dashboard') ? 'active': ''}}">
             <i class="nav-icon fas fa-th"></i>
@@ -43,17 +43,9 @@
         </li>
         <li class="nav-item">
           <a href="{{ route('public-status') }}" class="nav-link {{ ($active === 'public-status') ? 'active': ''}}">
-            <i class="nav-icon fa fa-bolt"></i>
+            <i class="nav-icon fa fa-clock-rotate-left"></i>
             <p>
-              Public Status
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="{{ route('terminal.permission') }}" class="nav-link {{ ($active === 'terminal-permission') ? 'active': ''}}">
-            <i class="nav-icon fa fa-terminal"></i>
-            <p>
-              Terminal Permission
+              Public Logs
             </p>
           </a>
         </li>
@@ -61,7 +53,19 @@
           <a href="{{ route('log') }}" class="nav-link {{ ($active === 'log') ? 'active': ''}}">
             <i class="nav-icon fas fa-clock-rotate-left"></i>
             <p>
-              Log
+              All Logs
+            </p>
+          </a>
+        </li>
+        @endcan
+
+        <li class="nav-header">Terminal</li>
+        @can('admin')
+        <li class="nav-item">
+          <a href="{{ route('terminal.permission') }}" class="nav-link {{ ($active === 'terminal-permission') ? 'active': ''}}">
+            <i class="nav-icon fa fa-terminal"></i>
+            <p>
+              Terminal Permission
             </p>
           </a>
         </li>
