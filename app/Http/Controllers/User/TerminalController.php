@@ -36,7 +36,7 @@ class TerminalController extends Controller
     public function execute(Request $request, TerminalPermission $terminalpermission)
     {
         try {
-            $process = Process::path($terminalpermission->hook->path)->run($request->command);
+            $process = Process::forever()->path($terminalpermission->hook->path)->run($request->command);
 
             $error = $process->errorOutput();
             $success = $process->output();
