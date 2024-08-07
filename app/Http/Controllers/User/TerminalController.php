@@ -29,7 +29,7 @@ class TerminalController extends Controller
             'totalExe' => TerminalHistory::where('terminalpermission_id', $terminalpermission->id)->count(),
             'totalSuccessExe' => TerminalHistory::where('terminalpermission_id', $terminalpermission->id)->where('status', 'success')->count(),
             'totalErrorExe' => TerminalHistory::where('terminalpermission_id', $terminalpermission->id)->where('status', 'error')->count(),
-            'histories' => TerminalHistory::where('terminalpermission_id', $terminalpermission->id)->paginate(5)->withQueryString()
+            'histories' => TerminalHistory::where('terminalpermission_id', $terminalpermission->id)->latest()->paginate(5)->withQueryString()
         ]);
     }
 
