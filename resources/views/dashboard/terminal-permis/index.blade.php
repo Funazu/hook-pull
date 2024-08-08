@@ -24,7 +24,7 @@
     $(document).ready( function () {
     $('#myTableCustom').DataTable({
       responsive: true,
-      columnDefs: [{ width: '3%', targets: 0 }, { width: '5%', targets: -1 }]
+      columnDefs: [{ width: '3%', targets: 0 }, { width: '10%', targets: -1 }]
     });
 });
 </script>
