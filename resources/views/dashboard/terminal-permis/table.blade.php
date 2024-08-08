@@ -20,6 +20,7 @@
                         <form action="/dashboard/terminal-permission/delete/{{ $terminal->id_terminal_permission }}" method="post">
                             @csrf
                             <button type="submit" class="btn btn-danger mb-1" onclick="return confirm('Are you sure you want to delete')"><i class="fas fa-trash"></i></button>
+                            <a href="{{ "/dashboard/terminal/" . $terminal->id_terminal_permission }}" class="btn btn-success mb-1"><i class="fas fa-eye"></i></a>
                             {{-- <a href="{{ "/status/" . $status->id_status }}" target="_blank" class="btn btn-success mb-1"><i class="fas fa-eye"></i></a> --}}
                         </form>
                     </td>
